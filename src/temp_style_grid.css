@@ -1,0 +1,47 @@
+
+/* Solution Grid Layout */
+.solution-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  margin-top: 2rem;
+}
+
+/* Adjust margins for grid items */
+.solution-grid .network-visual {
+  margin: 0; /* Reset margin */
+  flex: 1;
+  min-width: 0; /* Prevent overflow in flex */
+  /* Maintain previous visual style */
+  padding: 4rem;
+  background: radial-gradient(circle at center, rgba(109, 40, 217, 0.15) 0%, rgba(255, 255, 255, 0.02) 70%);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
+}
+
+.solution-grid .feature-list {
+  margin-top: 0; /* Reset margin */
+  flex: 0 0 auto;
+  min-width: 250px;
+}
+
+/* Responsive adjustments for Solution Grid */
+@media (max-width: 1024px) {
+  .solution-grid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+  }
+
+  .solution-grid .feature-list {
+    width: 100%;
+    order: 2; /* Put list below animation on mobile if desired, or 0 for top */
+  }
+
+  .solution-grid .network-visual {
+    order: 1;
+  }
+}
+

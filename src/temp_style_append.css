@@ -1,0 +1,172 @@
+
+/* Steps Animation & Styling */
+.steps-container {
+  position: relative;
+}
+
+.steps-line-container {
+  position: absolute;
+  top: 40px;
+  bottom: 40px;
+  left: 50px;
+  width: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.steps-line-progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, var(--primary), transparent);
+  animation: lineFlow 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes lineFlow {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+.step-card {
+  z-index: 1;
+  border-left: 1px solid transparent;
+}
+
+.step-card:hover {
+  border-left: 1px solid var(--primary);
+}
+
+.step-icon.animated-icon svg {
+  width: 40px;
+  height: 40px;
+  overflow: visible;
+}
+
+/* Idea Icon Animation */
+.idea-icon .bulb {
+  stroke: var(--accent);
+  animation: bulbPulse 2s infinite alternate;
+}
+.idea-icon .filament {
+  stroke: var(--primary);
+  opacity: 0.5;
+}
+.idea-icon .sparks line {
+  stroke: #eab308;
+  stroke-width: 2;
+  stroke-linecap: round;
+  opacity: 0;
+  animation: sparkFlash 2s infinite;
+  transform-origin: center;
+}
+@keyframes bulbPulse {
+  from { filter: drop-shadow(0 0 2px var(--accent)); stroke: var(--accent); }
+  to { filter: drop-shadow(0 0 8px var(--accent)); stroke: #fff; }
+}
+@keyframes sparkFlash {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Content Icon Animation */
+.content-icon .post-card {
+  stroke: var(--text-muted);
+  fill: rgba(255,255,255,0.02);
+}
+.content-icon .post-content, .content-icon .post-avatar {
+  fill: var(--text-muted);
+  opacity: 0.5;
+}
+.content-icon .pen {
+  fill: var(--primary);
+  animation: writePost 2s ease-in-out infinite;
+  transform-origin: bottom left;
+}
+@keyframes writePost {
+  0% { transform: translate(0, 0) rotate(0); }
+  25% { transform: translate(2px, -2px) rotate(-5deg); }
+  50% { transform: translate(4px, 0) rotate(0); }
+  75% { transform: translate(2px, -2px) rotate(-5deg); }
+  100% { transform: translate(0, 0) rotate(0); }
+}
+
+/* Social Icon Animation */
+.social-icon .share-nodes {
+  stroke: var(--text-main);
+}
+.social-icon .pulse-ring {
+  stroke: var(--primary);
+  fill: none;
+  opacity: 0;
+  transform-origin: center;
+  animation: socialRipple 3s linear infinite;
+}
+.social-icon .r1 { animation-delay: 0s; }
+.social-icon .r2 { animation-delay: 1s; }
+.social-icon .r3 { animation-delay: 2s; }
+
+@keyframes socialRipple {
+  0% { transform: scale(0.1); opacity: 1; stroke-width: 3; }
+  100% { transform: scale(1.5); opacity: 0; stroke-width: 0; }
+}
+
+/* Analyze Icon Animation */
+.analyze-icon .chart-line {
+  stroke: var(--text-muted);
+  opacity: 0.3;
+}
+.analyze-icon .chart-bar {
+  fill: var(--success);
+  transform-origin: bottom;
+  animation: barGrow 2s ease-in-out infinite alternate;
+}
+.analyze-icon .b1 { animation-delay: 0s; }
+.analyze-icon .b2 { animation-delay: 0.2s; }
+.analyze-icon .b3 { animation-delay: 0.4s; }
+
+@keyframes barGrow {
+  from { transform: scaleY(0.3); opacity: 0.7; }
+  to { transform: scaleY(1); opacity: 1; filter: drop-shadow(0 0 5px var(--success)); }
+}
+
+/* Build Icon Animation */
+.build-icon .rocket-body {
+  stroke: var(--text-main);
+  fill: rgba(255,255,255,0.05);
+  animation: rocketShake 0.5s infinite;
+}
+.build-icon .rocket-fire line {
+  stroke: #ef4444;
+  stroke-width: 2;
+  animation: fireStream 0.2s linear infinite alternate;
+}
+
+@keyframes rocketShake {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(0, 0); }
+  75% { transform: translate(1px, -1px); }
+  100% { transform: translate(0, 0); }
+}
+@keyframes fireStream {
+  from { stroke-dasharray: 2; stroke-dashoffset: 0; opacity: 0.8; }
+  to { stroke-dasharray: 2; stroke-dashoffset: 4; opacity: 1; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .steps-line-container {
+    left: 20px; /* Align with simplified mobile padding if needed, or hide */
+    display: none; /* Often cleaner to hide the line on mobile card stacks */
+  }
+}
+
